@@ -1,0 +1,163 @@
+/*============= Global ==============*/
+html {
+  --color-background-page: rgb(190, 190, 190);
+  --color-background: #fcf0e9 ;
+  --color-black: rgb(17, 9, 9);
+  --color-white: rgb(245, 245, 245) ;
+  --color-font: rgb(60, 60, 60);
+  /*--color-primari: rgba(255, 179, 132, .9);*/
+  /*--color-primari: rgb(228, 96, 8);*/
+}
+
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
+h1, h2, h3, p { padding: 0; margin: 0; }
+li { list-style: none; padding: 0; display: inline;}
+ul { padding: 0; }
+
+:root { font-size: 10px; }
+
+body {
+  margin: 0;
+
+  font-family: 'El Messiri', sans-serif;
+  font-size: 1.6rem;
+  
+  /*font-variant: small-caps;*/
+
+  background-color: var(--color-background-page);
+  color: var(--color-font) ;
+
+  /*display: flex;
+  justify-content: center;*/
+
+}
+
+/*============= Header ==============*/
+header {
+  height: 20rem;
+  background-color: rgb(0, 80, 0);
+  color: var(--color-white);
+  text-align: center;
+  padding-top: 4rem;
+
+}
+
+#logo {
+  font-weight: 400;
+}
+
+/*============= Main ==============*/
+
+.container {
+  width: 80vw;
+  margin: auto;
+}
+
+#balance {
+  margin-top: -10rem;
+}
+
+#balance > h2 {
+  color: var(--color-white);
+  margin-bottom: 1rem;
+}
+
+/*============= CARDs ==============*/
+#balance .card {
+  background-color: var(--color-background);
+
+  border-radius: .3rem;
+  padding: 2rem;
+}
+
+#balance .card {
+  margin-bottom: 2rem;  
+}
+
+#balance .card:last-child {
+  margin-bottom: 4rem;
+}
+
+#balance .card.-total {
+  background-color: rgb(24, 150, 24);
+  color: var(--color-white);
+}
+
+#balance .card h3{
+  font-size: 1.6rem;
+  margin-bottom: .8rem;
+}
+#balance .card p{
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+/*============= Table ==============*/
+
+#data-table {
+  /*background-color: hotpink;*/
+  width: 100%;
+  border-spacing: 0 .5rem;
+  margin-bottom: 6rem;
+  
+}
+
+#data-table tr {
+  background-color: var(--color-background);
+  cursor: pointer;
+}
+#data-table tbody tr {
+  opacity: .7;
+}
+
+#data-table tr:hover {
+  opacity: 1;
+}
+
+#data-table th, td {
+  text-align: left;
+  padding: 1rem 2rem;
+}
+
+#data-table th:first-child {
+  border-radius: .5rem 0 0 0;
+}
+#data-table th:last-child {
+  border-radius: 0 .5rem 0 0;
+}
+
+/* #data-table td:first-child {
+  border-radius: .5rem 0 0 .5rem;
+}
+
+#data-table td:last-child {
+  border-radius: 0 .5rem .5rem 0;
+} */
+
+#data-table tr:last-child td:first-child {
+  border-radius: 0 0 0 .5rem;
+}
+
+#data-table tr:last-child td:last-child {
+  border-radius: 0 0 .5rem 0;
+}
+
+#data-table .expense {
+  color: red;
+}
+
+#data-table .income {
+  color: green;
+}
+
+
+
+
+
+/*============= Footer ==============*/
+footer {
+  text-align: center;
+  opacity: .6;
+  margin: 2rem 0;
+}
