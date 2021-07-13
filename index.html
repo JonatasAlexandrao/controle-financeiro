@@ -34,7 +34,7 @@
     </section>
     <section id="transaction">
       <h2 class="sr-only">Transações</h2>
-      <a href="#" class="button new">+ Nova Transação</a>
+      <a href="#" class="button new" onclick="Modal.openClose()">+ Nova Transação</a>
 
       <table id="data-table">
         <thead>
@@ -73,6 +73,42 @@
   <footer>
     2021 JJ.Finances
   </footer>
+
+  <div class="modal-overlay">
+    <div class="modal">
+      <div class="modal-content">
+        <div class="form">
+          <h3>Nova Transação</h3>
+          <form action="">
+
+            <div class="input-group">
+              <label class="sr-only" for="description">Descrição</label>
+              <input type="text" id="description" name="description" placeholder="Descrição">
+            </div>
+
+            <div class="input-group">
+              <label class="sr-only" for="amount">Valor</label>
+              <input type="number" id="amount" name="amount" placeholder="0,00" step="0.01">
+              <small class="help">Use o sinal - (negavitvo) para despesa e , (virgula) para casas decimais.</small>
+            </div>
+            
+
+            <div class="input-group">
+              <label class="sr-only" for="date">Data</label>
+              <input type="date" id="date" name="date">
+            </div>
+
+            <div class="input-group actions">
+              <a href="#" class="button cancel" onclick="Modal.openClose()">Cancelar</a>
+              <button class="button save">Salvar</button>
+            </div>
+            
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
   
   <script src="./script.js"></script>
 </body>
