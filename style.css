@@ -163,7 +163,7 @@ header {
 
 #data-table tr {
   background-color: var(--color-background);
-  cursor: pointer;
+  cursor: default;
 }
 #data-table tbody tr {
   opacity: .7;
@@ -207,6 +207,17 @@ header {
 
 #data-table .income {
   color: green;
+}
+
+#data-table tr .icon-item { 
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+}
+
+#data-table tr .icon-item > img { 
+  width: 2.5rem;
+  cursor: pointer;
 }
 
 /*============= Footer ==============*/
