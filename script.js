@@ -6,31 +6,38 @@ const Modal = {
   },
 }
 
-
-const transactions = [
-  {
-    id: 1,
-    description: 'Luz',
-    amount: -50011,
-    date: '23/01/2021'
+const Storage = {
+  get() {
+    return JSON.parse(localStorage.getItem("jj.finances:transaction")) || []
   },
-  {
-    id: 2,
-    description: 'website',
-    amount: 574365,
-    date: '23/01/2021'
-  },
-  {
-    id: 3,
-    description: 'Internet',
-    amount: -20002,
-    date: '23/01/2021'
-  },
-]
+  set(transactions) {
+    localStorage.setItem("jj.finances:transaction", JSON.stringify(transactions))
+  }
+}
+// const transactions = [
+//   {
+//     id: 1,
+//     description: 'Luz',
+//     amount: -50011,
+//     date: '23/01/2021'
+//   },
+//   {
+//     id: 2,
+//     description: 'website',
+//     amount: 574365,
+//     date: '23/01/2021'
+//   },
+//   {
+//     id: 3,
+//     description: 'Internet',
+//     amount: -20002,
+//     date: '23/01/2021'
+//   },
+// ]
 
 const Transaction = {
 
-  all: transactions,
+  all: Storage.get(),
 
   add(transaction) {
     Transaction.all.push(transaction)
@@ -79,12 +86,13 @@ const DOM = {
 
   addTransaction(transaction, index) {
     const tr = document.createElement('tr')
-    tr.innerHTML = DOM.innerHTMLTransaction(transaction)
+    tr.innerHTML = DOM.innerHTMLTransaction(transaction, index)
+    tr.dataset.index = index
 
     DOM.transactionsContainer.appendChild(tr)
   },
 
-  innerHTMLTransaction(transaction) {
+  innerHTMLTransaction(transaction, index) {
 
     const CSSclass = transaction.amount > 0 ? "income" : "expense"
     const amount = Utils.formatCurrency(transaction.amount)
@@ -94,7 +102,7 @@ const DOM = {
     <td class="${CSSclass}"> ${amount} </td>
     <td class="date"> ${transaction.date} </td>
     <td class="icon-item">
-      <img class="-remove" src="./assets/minus.svg" alt="remover transação">
+      <img onclick="Transaction.remove(${index})" class="-remove" src="./assets/minus.svg" alt="remover transação">
     </td>
     `
 
@@ -113,6 +121,7 @@ const DOM = {
       .innerHTML = Utils.formatCurrency(Transaction.total())
     
   },
+
   clearTransaction() {
     DOM.transactionsContainer.innerHTML = ''
   }
@@ -218,12 +227,15 @@ const Form = {
 
 
 
+
 const App = {
   init() {
-    Transaction.all.forEach(transaction => {
-      DOM.addTransaction(transaction)
+    Transaction.all.forEach((transaction, index) => {
+      DOM.addTransaction(transaction, index)
     })
     DOM.updateBalance()
+
+    Storage.set(Transaction.all)
 
     
   },
@@ -237,11 +249,4 @@ const App = {
 
 App.init()
 
-
-Transaction.add({
-  id: 50,
-  description: 'aaaa',
-  amount: 200,
-  date: '20/05/2021'
-})
 
